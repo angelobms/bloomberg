@@ -51,6 +51,8 @@ Then you can run this file with sudo (its necessary because the docker-compose c
 ```sh
 $ sudo ./build-docker.sh
 ```
+You should wait all services be available, after that you can make the requests for test.
+
 In this project, the math-expression gets the result of math operation from calculator-api. We use eureka-service, 
 which implement service registration and discovery, to be possible one service call the other one.   
 
