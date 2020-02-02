@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+
+  eureka-server:
+    image: bloomberg/eureka-server
+    restart: always
+    networks:
+      - devops-network
+    ports:
+      - 8761:8761
+    container_name: eureka-server
+    
+  calculator-api:
+    image: bloomberg/calculator-api
+    restart: always
+    networks:
+      - devops-network
+    ports:
+      - 8080:8080
+      - 8801:9092
+    container_name: calculator-api
+    depends_on:
+      - eureka-server
+    
+  math-expression:
+    image: bloomberg/math-expression
+    restart: always
+    networks:
+      - devops-network
+    ports:
+      - 8100:8100
+    container_name: math-expression
+    depends_on:
+      - eureka-server
+      - calculator-api
+
+networks:
+  devops-network:

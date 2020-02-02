@@ -1,0 +1,6 @@
+
+external:
+  client:
+    calculator-api:
+      id: calculator-api
+      context-uri: api/v1/calculators

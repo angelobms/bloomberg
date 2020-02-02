@@ -1,0 +1,48 @@
+apply plugin: "jacoco"
+
+jacoco {
+    toolVersion = "0.8.2"
+}
+
+jacocoTestReport {
+    group = "Reporting"
+    reports {
+        xml.enabled true
+        csv.enabled false
+    }
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: ['**/MathExpressionApplication**',
+                                        '**/exceptions/**',
+                                        '**/annotations/**',
+                                        '**/external/**',
+                                        '**/requests/**',
+                                        '**/responses/**',
+                                        '**/errors/**'])
+        }))
+    }
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            element = 'CLASS'
+            limit {
+                counter = 'LINE'
+                value = 'COVEREDRATIO'
+                minimum = 0.3
+            }
+            excludes = [
+                    'com.bloomberg.mathexpression.MathExpressionApplication*',
+                    'com.bloomberg.mathexpression.exceptions.*',
+                    'com.bloomberg.mathexpression.annotations.*',
+                    'com.bloomberg.mathexpression.services.external.*',
+                    'com.bloomberg.mathexpression.web.errors.*',
+                    'com.bloomberg.mathexpression.web.requests.*',
+                    'com.bloomberg.mathexpression.web.responses.*'
+            ]
+        }
+    }
+}
+
+check.dependsOn jacocoTestCoverageVerification

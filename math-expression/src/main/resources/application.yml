@@ -1,0 +1,50 @@
+server:
+  port: ${SERVER_PORT:8100}
+
+spring:
+  application:
+    name: math-expression
+  cloud:
+    config:
+      uri: http://calculator-api:8080
+  messages:
+    basename: messages
+  jackson:
+    default-property-inclusion: non_null
+
+external:
+  client:
+    calculator-api:
+      id: calculator-api
+      context-uri: api/v1/calculators
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${SERVER_URL:http://eureka-server:8761}/eureka
+  fetch-registry: true
+  register-with-eureka: true
+
+feign:
+  compression:
+    enabled: true
+    request:
+      mime-types: application/json
+  httpclient:
+    enabled: true
+
+security:
+  basic:
+    enable: false
+
+management:
+  security:
+    enabled: false
+
+logging:
+  level:
+    org:
+      springframework: INFO
+    com:
+      bloomberg:
+        mathexpression: DEBUG

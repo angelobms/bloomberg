@@ -1,0 +1,44 @@
+apply plugin: "jacoco"
+
+jacoco {
+    toolVersion = "0.8.2"
+}
+
+jacocoTestReport {
+    group = "Reporting"
+    reports {
+        xml.enabled true
+        csv.enabled false
+    }
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: ['**/CalculatorApiApplication**',
+                                        '**/exceptions/**',
+                                        '**/requests/**',
+                                        '**/responses/**',
+                                        '**/errors/**'])
+        }))
+    }
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            element = 'CLASS'
+            limit {
+                counter = 'LINE'
+                value = 'COVEREDRATIO'
+                minimum = 0.8
+            }
+            excludes = [
+                    'com.bloomberg.calculatorapi.CalculatorApiApplication*',
+                    'com.bloomberg.calculatorapi.exceptions.*',
+                    'com.bloomberg.calculatorapi.web.errors.*',
+                    'com.bloomberg.calculatorapi.web.requests.*',
+                    'com.bloomberg.calculatorapi.web.responsees.*'
+            ]
+        }
+    }
+}
+
+check.dependsOn jacocoTestCoverageVerification

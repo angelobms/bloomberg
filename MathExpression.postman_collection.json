@@ -1,0 +1,151 @@
+{
+	"info": {
+		"_postman_id": "b4057b76-5801-48a1-80be-e58f1c92e6d5",
+		"name": "MathExpression",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "calculator-api",
+			"item": [
+				{
+					"name": "Calc with data valid",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"number1\": 2.2,\n\t\"number2\": 4,\n\t\"operation\": \"+\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/calculators",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"calculators"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Calc with operator invalid",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"number1\": 2.2,\n\t\"number2\": 4,\n\t\"operation\": \"^\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/calculators",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"calculators"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "math-expression",
+			"item": [
+				{
+					"name": "Expression with data valid",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"number1\": 2.2,\n\t\"number2\": 2,\n\t\"operation\": \"*\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8100/api/v1/expressions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8100",
+							"path": [
+								"api",
+								"v1",
+								"expressions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Expression with data invalid",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"number1\": 2.2,\n\t\"number2\": 0,\n\t\"operation\": \"/\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8100/api/v1/expressions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8100",
+							"path": [
+								"api",
+								"v1",
+								"expressions"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
