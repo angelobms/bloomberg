@@ -12,7 +12,7 @@ Math Expression API is a set of micro-services API responsible to perform math o
 
 ### Tech
 
-Altran Shopping Cart API was developed using the technologies bellow:
+Math Expression API was developed using the technologies bellow:
 
 * [Java] - Java 12
 * [Spring Boot] - Spring Boot 2
