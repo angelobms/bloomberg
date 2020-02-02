@@ -54,6 +54,16 @@ $ sudo ./build-docker.sh
 In this project, the math-expression gets the result of math operation from calculator-api. We use eureka-service, 
 which implement service registration and discovery, to be possible one service call the other one.   
 
+@startuml
+:Math Expression: as MathExpression << math-expression >>
+:Calculator API: as CalculatorApi << calculator-api >>
+(Start) << Calc >>
+(Service Discovery) as (Eureka) << Main >>
+MathExpression -> (Start)
+MathExpression --> (Eureka)
+CalculatorApi --> (Eureka)
+@enduml
+
 You can test the Math Expression API using [Postman] and importing the collection 
 (MathExpression.postman_collection.json) located in the bloomberg directory. 
 
