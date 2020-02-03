@@ -53,7 +53,7 @@ $ sudo ./build-docker.sh
 ```
 You should wait for all services be available, after that you can make the requests for test.
 
-In this project, the math-expression gets the result of math operation from calculator-api. We use eureka-service, 
+In this project, the math-expression gets the result of math operation from calculator-api. We use eureka-server, 
 which implement service registration and discovery, to be possible one service call the other one.   
 
 ![alt text](http://www.plantuml.com/plantuml/png/SoWkIImgAStDuShBJqbLS2qjIirE34ujAaijWeZu9fPak5OK5AKM5sVcvq74d1Dpaajp4aloYnmBChcGzIZewQ7fKB1ISCaiJiu7IbQYAqKr24KbcY6wkXXgau5yBeVKl1IWum40 "Component diagram")
