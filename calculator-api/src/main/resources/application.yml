@@ -8,6 +8,8 @@ spring:
     basename: messages
   jackson:
     default-property-inclusion: non_null
+springdoc:
+  packagesToScan: com.bloomberg.calculatorapi.web.controllers
 
 eureka:
   client:
