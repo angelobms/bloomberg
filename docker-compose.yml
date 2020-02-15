@@ -20,7 +20,6 @@ services:
       - devops-network
     ports:
       - 8080:8080
-      - 8801:9092
     container_name: calculator-api
     depends_on:
       - eureka-server
